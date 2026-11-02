@@ -6,7 +6,7 @@
 const zonaSoltar = document.getElementById("zonaSoltar");
 const analisis = document.getElementById("analisis");
 const mensajeError = document.getElementById("mensajeError");
-const botonOtro = document.getElementById("botonOtro");
+const botonVolver = document.getElementById("botonVolver");
 
 let graficasActivas = [];
 
@@ -27,13 +27,21 @@ window.addEventListener("drop", (e) => {
   if (archivo) abrirArchivo(archivo);
 });
 
-for (const id of ["inputArchivo", "inputArchivo2"]) {
-  document.getElementById(id).addEventListener("change", (e) => {
-    const archivo = e.target.files[0];
-    if (archivo) abrirArchivo(archivo);
-    e.target.value = "";
-  });
-}
+document.getElementById("inputArchivo").addEventListener("change", (e) => {
+  const archivo = e.target.files[0];
+  if (archivo) abrirArchivo(archivo);
+  e.target.value = "";
+});
+
+// Vuelve a la pantalla de inicio sin recargar, para no perder el permiso de
+// Google ni la lista de entrenamientos ya cargada.
+botonVolver.addEventListener("click", () => {
+  analisis.hidden = true;
+  botonVolver.hidden = true;
+  mensajeError.hidden = true;
+  zonaSoltar.hidden = false;
+  window.scrollTo(0, 0);
+});
 
 async function abrirArchivo(archivo) {
   try {
@@ -52,7 +60,7 @@ window.abrirBytes = abrirBytes;
 
 function mostrarError(texto) {
   analisis.hidden = true;
-  botonOtro.hidden = true;
+  botonVolver.hidden = true;
   zonaSoltar.hidden = false;
   mensajeError.textContent = texto;
   mensajeError.hidden = false;
@@ -210,7 +218,7 @@ function mostrarAnalisis(act, nombreArchivo) {
   zonaSoltar.hidden = true;
   mensajeError.hidden = true;
   analisis.hidden = false;
-  botonOtro.hidden = false;
+  botonVolver.hidden = false;
   window.scrollTo(0, 0);
 }
 
