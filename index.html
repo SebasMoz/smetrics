@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMetrics</title>
+  <link rel="stylesheet" href="estilos.css">
+  <!-- Librerías guardadas dentro del proyecto (nunca desde internet) -->
+  <script src="lib/garmin-fitsdk/fitsdk.js"></script>
+  <script src="lib/chartjs/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="barra">
+    <h1>SMetrics</h1>
+    <label class="boton" id="botonOtro" hidden>
+      Abrir otro archivo
+      <input type="file" accept=".fit,.FIT" class="oculto" id="inputArchivo2">
+    </label>
+  </header>
+
+  <main>
+    <section id="zonaSoltar" class="zona-soltar">
+      <div class="zona-contenido">
+        <div class="zona-icono">⬇</div>
+        <p class="zona-titulo">Arrastra aquí tu archivo .FIT</p>
+        <p class="zona-sub">del Garmin o del Wahoo</p>
+        <label class="boton">
+          o búscalo en tu computadora
+          <input type="file" accept=".fit,.FIT" class="oculto" id="inputArchivo">
+        </label>
+        <p class="error" id="mensajeError" hidden></p>
+      </div>
+    </section>
+
+    <section id="analisis" hidden>
+      <div class="encabezado">
+        <p class="deporte" id="deporte"></p>
+        <h2 id="titulo"></h2>
+        <p class="sub" id="subtitulo"></p>
+      </div>
+
+      <div class="tarjetas" id="tarjetas"></div>
+
+      <div class="fila-dos">
+        <div class="panel">
+          <h3>Recorrido</h3>
+          <div id="ruta" class="ruta"></div>
+        </div>
+        <div class="panel">
+          <h3>Tiempo en zonas de pulso</h3>
+          <div id="zonas"></div>
+          <p class="nota" id="notaZonas"></p>
+        </div>
+      </div>
+
+      <div id="graficas"></div>
+
+      <div class="panel">
+        <h3 id="tituloParciales">Parciales</h3>
+        <div class="tabla-scroll">
+          <table id="parciales"></table>
+        </div>
+      </div>
+
+      <div class="panel" id="panelExtra" hidden>
+        <h3>Más datos del reloj</h3>
+        <div class="tarjetas pequenas" id="extra"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="configuracion.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
