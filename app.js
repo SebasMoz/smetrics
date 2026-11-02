@@ -37,14 +37,18 @@ for (const id of ["inputArchivo", "inputArchivo2"]) {
 
 async function abrirArchivo(archivo) {
   try {
-    const bytes = await archivo.arrayBuffer();
-    const actividad = leerFit(bytes);
-    mostrarAnalisis(actividad, archivo.name);
+    abrirBytes(await archivo.arrayBuffer(), archivo.name);
   } catch (err) {
     console.error(err);
     mostrarError(err.message);
   }
 }
+
+// También lo usa drive.js, con el archivo bajado de Google Drive.
+function abrirBytes(bytes, nombre) {
+  mostrarAnalisis(leerFit(bytes), nombre);
+}
+window.abrirBytes = abrirBytes;
 
 function mostrarError(texto) {
   analisis.hidden = true;

@@ -28,4 +28,16 @@ window.CONFIGURACION = {
     maximo: 193,
     zonas: [116, 143, 158, 170, 179, 193],
   },
+
+  // Conexión con Google Drive (solo funciona en la versión publicada en
+  // internet, no abriendo index.html con doble clic).
+  //
+  // "clientId" lo da Google y NO es una contraseña: es un identificador
+  // público, y Google solo lo acepta desde la dirección sebasmoz.github.io.
+  // "carpeta" es el nombre de la carpeta de tu Drive donde FitnessSyncer
+  // va dejando los archivos .FIT.
+  google: {
+    clientId: "506500439970-umg4cu0v43ig5nndvutnvams7v6as81u.apps.googleusercontent.com",
+    carpeta: "SMetrics",
+  },
 };

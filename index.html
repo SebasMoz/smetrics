@@ -37,9 +37,17 @@
         <p class="zona-titulo">Arrastra aquí tu archivo .FIT</p>
         <p class="zona-sub">del Garmin o del Wahoo</p>
         <label class="boton">
-          o búscalo en tu computadora
+          o búscalo en tu dispositivo
           <input type="file" accept=".fit,.FIT" class="oculto" id="inputArchivo">
         </label>
+
+        <div class="drive" id="panelDrive" hidden>
+          <p class="drive-o">o léelo directo de tu Google Drive</p>
+          <button type="button" class="boton" id="botonDrive">Conectar con Google Drive</button>
+          <p class="drive-estado" id="estadoDrive" hidden></p>
+          <div class="drive-lista" id="listaDrive"></div>
+        </div>
+
         <p class="error" id="mensajeError" hidden></p>
       </div>
     </section>
@@ -83,5 +91,6 @@
 
   <script src="configuracion.js"></script>
   <script src="app.js"></script>
+  <script src="drive.js"></script>
 </body>
 </html>
